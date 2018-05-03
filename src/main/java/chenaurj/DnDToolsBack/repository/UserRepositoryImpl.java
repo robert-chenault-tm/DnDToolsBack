@@ -16,17 +16,17 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	public User createUser(User user) {
 		jdbcTemplate.update("insert into users (id, username, password, enabled) values (?, ?, ?, ?)", user.getId(), user.getUsername(), user.getPassword(), user.isEnabled());
-		jdbcTemplate.update("insert into authorities (userid, username, authority) values (?, ?, ?)", user.getId(), user.getUsername(), "ROLE_USER");
-		return getUser(user.getId());
+		jdbcTemplate.update("insert into authorities (user_id, username, authority) values (?, ?, ?)", user.getId(), user.getUsername(), "ROLE_USER");
+		return getUser(user.getUsername());
 	}
 
 	@Override
-	public User getUser(String id) {
+	public User getUser(String username) {
 		User user;
 		try {
-			user = jdbcTemplate.queryForObject("select * from users where id = ?", new UserRowMapper(), id);
+			user = jdbcTemplate.queryForObject("select * from users where username = ?", new UserRowMapper(), username);
 		} catch(Exception ex) {
-			System.out.println(ex.getMessage());
+			System.out.println("Exception caught in UserRepositoryImpl.getUser: " + ex.getMessage());
 			user = null;
 		}
 		

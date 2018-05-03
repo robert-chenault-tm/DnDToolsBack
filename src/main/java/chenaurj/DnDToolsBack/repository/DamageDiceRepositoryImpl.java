@@ -25,7 +25,7 @@ public class DamageDiceRepositoryImpl implements DamageDiceRepository {
 				jdbcTemplate.update("insert into damage_dice (id, dice_number, dice_type, damage_type) values (?, ?, ?, ?)", id, die.getDiceNumber(), die.getDiceType(), die.getDamageType());
 			}
 		} catch(Exception ex) {
-			System.out.println(ex.getMessage());
+			System.out.println("Exception caught in DamageDiceRepositoryImpl.createDamageDiceIfNonExistent: " + ex.getMessage());
 		}
 		
 	}
@@ -36,7 +36,7 @@ public class DamageDiceRepositoryImpl implements DamageDiceRepository {
 			String damageId = jdbcTemplate.queryForObject("select id from damage_dice where dice_number = ? and dice_type = ? and damage_type = ?", String.class, die.getDiceNumber(), die.getDamageType(), die.getDamageType());
 			jdbcTemplate.update("insert into weapon_damage (weapon_id, damage_id) values (?, ?)", id, damageId);
 		} catch(Exception ex) {
-			System.out.println(ex.getMessage());
+			System.out.println("Exception caught in DamageDiceRepositoryImpl.associateDamageDiceWithWeapon: " + ex.getMessage());
 		}
 	}
 

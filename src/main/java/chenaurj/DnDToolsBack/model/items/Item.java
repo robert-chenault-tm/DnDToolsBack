@@ -8,6 +8,8 @@ public class Item {
 	private String rarity;
 	private float valueInGP;
 	private float weightInlbs;
+	private WeaponMods weaponMods;
+	private ArmorMods armorMods;
 	
 	public String getId() {
 		return id;
@@ -45,5 +47,18 @@ public class Item {
 	public void setWeightInlbs(float weightInlbs) {
 		this.weightInlbs = weightInlbs;
 	}
+	public WeaponMods getWeaponMods() {
+		return weaponMods;
+	}
+	public void setWeaponMods(WeaponMods weaponMods) {
+		this.weaponMods = weaponMods;
+	}
+	public ArmorMods getArmorMods() {
+		return armorMods;
+	}
+	public void setArmorMods(ArmorMods armorMods) {
+		this.armorMods = armorMods;
+	}
+
 	
 }

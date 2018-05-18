@@ -1,4 +1,4 @@
-package chenaurj.DnDToolsBack.repository.items.util;
+package chenaurj.DnDToolsBack.repository.util;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,5 +1,7 @@
 package chenaurj.DnDToolsBack.controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -7,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,9 +29,9 @@ public class UserController {
 		return userService.createUser(user);
 	}
 	
-	@RequestMapping(value = "/authenticate/{username}/{password}", method = RequestMethod.POST)
-	public @ResponseBody boolean authenticateUser(@PathVariable(value = "username") String username, @PathVariable(value = "password") String password) {
-		return userService.authenticateUser(username, password);
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public @ResponseBody boolean authenticateUser(@RequestBody HashMap<String, String> data) {
+		return userService.authenticateUser(data.get("username"), data.get("password"));//username, password);
 	}
 	
 	@ExceptionHandler(EmptyResultDataAccessException.class)

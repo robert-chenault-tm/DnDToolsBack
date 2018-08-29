@@ -39,5 +39,4 @@ public class ItemController {
 	public @ResponseBody int getResultCount(@RequestBody HashMap<String, String> details) {
 		return itemService.getResultCount(details);
 	}
-	
 }

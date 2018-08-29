@@ -19,9 +19,9 @@ public class PlayerCharacterRepositoryImpl implements PlayerCharacterRepository 
 	public PlayerCharacter getCharacter(String id) {
 		PlayerCharacter character;
 		try {
-			character = jdbcTemplate.queryForObject("select * from character where id = ?", new PlayerCharacterRowMapper(), id);
+			character = jdbcTemplate.queryForObject("select * from `character` where id = ?", new PlayerCharacterRowMapper(), id);
 		} catch(Exception ex) {
-			System.out.println("Exception caught in UserRepositoryImpl.getUser: " + ex.getMessage());
+			System.out.println("Exception caught in PlayerCharacterRepositoryImpl.getCharacter: " + ex.getMessage());
 			character = null;
 		}
 		return character;

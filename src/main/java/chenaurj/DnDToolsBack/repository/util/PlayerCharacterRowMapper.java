@@ -21,6 +21,7 @@ public class PlayerCharacterRowMapper implements RowMapper<PlayerCharacter> {
 		character.setDexterity(rs.getInt("dexterity"));
 		character.setIntelligence(rs.getInt("intelligence"));
 		character.setConstitution(rs.getInt("constitution"));
+		character.setWisdom(rs.getInt("wisdom"));
 		character.setCharisma(rs.getInt("charisma"));
 		character.setRaceId(rs.getString("race_id"));
 		return character;

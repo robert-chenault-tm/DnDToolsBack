@@ -14,7 +14,14 @@ public class PlayerCharacter {
 	private int wisdom;
 	private int charisma;
 	private String raceId;
+	private String raceName;
 	
+	public String getRaceName() {
+		return raceName;
+	}
+	public void setRaceName(String raceName) {
+		this.raceName = raceName;
+	}
 	public String getId() {
 		return id;
 	}

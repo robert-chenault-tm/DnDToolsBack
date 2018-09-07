@@ -19,7 +19,7 @@ public class PlayerCharacterRepositoryImpl implements PlayerCharacterRepository 
 	public PlayerCharacter getCharacter(String id) {
 		PlayerCharacter character;
 		try {
-			character = jdbcTemplate.queryForObject("select `character`.*, race.name as race_name from `character` join race on `character`.race_id = race.id where `character`.id = ?", new PlayerCharacterRowMapper(), id);
+			character = jdbcTemplate.queryForObject("select `character`.*, race.name as race_name, class.name as class_name from `character` join race on `character`.race_id = race.id join class on `character`.class_id = class.id where `character`.id = ?", new PlayerCharacterRowMapper(), id);
 		} catch(Exception ex) {
 			System.out.println("Exception caught in PlayerCharacterRepositoryImpl.getCharacter: " + ex.getMessage());
 			character = null;
@@ -29,7 +29,7 @@ public class PlayerCharacterRepositoryImpl implements PlayerCharacterRepository 
 
 	@Override
 	public List<PlayerCharacter> getCharacters(String userName) {
-		return jdbcTemplate.query("select `character`.*, race.name as race_name from `character` join race on `character`.race_id = race.id where `character`.username = ?", new PlayerCharacterRowMapper(), userName);
+		return jdbcTemplate.query("select `character`.*, race.name as race_name, class.name as class_name from `character` join race on `character`.race_id = race.id join class on `character`.class_id = class.id where `character`.username = ?", new PlayerCharacterRowMapper(), userName);
 	}
 
 	@Override

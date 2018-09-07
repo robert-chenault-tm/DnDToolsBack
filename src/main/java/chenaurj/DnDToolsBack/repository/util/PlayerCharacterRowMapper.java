@@ -25,6 +25,9 @@ public class PlayerCharacterRowMapper implements RowMapper<PlayerCharacter> {
 		character.setCharisma(rs.getInt("charisma"));
 		character.setRaceId(rs.getString("race_id"));
 		character.setRaceName(rs.getString("race_name"));
+		character.setClassId(rs.getString("class_id"));
+		character.setClassName(rs.getString("class_name"));
+		
 		return character;
 	}
 

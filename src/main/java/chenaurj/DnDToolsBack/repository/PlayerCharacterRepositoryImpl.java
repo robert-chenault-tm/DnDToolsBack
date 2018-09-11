@@ -34,7 +34,7 @@ public class PlayerCharacterRepositoryImpl implements PlayerCharacterRepository 
 
 	@Override
 	public PlayerCharacter createCharacter(PlayerCharacter character) {
-		jdbcTemplate.update("insert into `character` (id, username, name, experience, level, strength, dexterity, intelligence, constitution, wisdom, charisma, race_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", character.getId(), character.getUserName(), character.getName(), character.getExperience(), character.getLevel(), character.getStrength(), character.getDexterity(), character.getIntelligence(), character.getConstitution(), character.getWisdom(), character.getCharisma(), character.getRaceId());
+		jdbcTemplate.update("insert into `character` (id, username, name, experience, level, strength, dexterity, intelligence, constitution, wisdom, charisma, race_id, class_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", character.getId(), character.getUsername(), character.getName(), character.getExperience(), character.getLevel(), character.getStrength(), character.getDexterity(), character.getIntelligence(), character.getConstitution(), character.getWisdom(), character.getCharisma(), character.getRaceId(), character.getClassId());
 		return character;
 		
 	}

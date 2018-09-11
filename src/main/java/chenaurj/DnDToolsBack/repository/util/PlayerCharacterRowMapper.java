@@ -13,7 +13,7 @@ public class PlayerCharacterRowMapper implements RowMapper<PlayerCharacter> {
 	public PlayerCharacter mapRow(ResultSet rs, int rowNum) throws SQLException {
 		PlayerCharacter character = new PlayerCharacter();
 		character.setId(rs.getString("id"));
-		character.setUserName(rs.getString("username"));
+		character.setUsername(rs.getString("username"));
 		character.setName(rs.getString("name"));
 		character.setExperience(rs.getInt("experience"));
 		character.setLevel(rs.getInt("level"));

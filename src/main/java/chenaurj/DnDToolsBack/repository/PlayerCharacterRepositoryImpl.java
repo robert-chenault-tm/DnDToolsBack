@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import chenaurj.DnDToolsBack.model.PlayerCharacter;
 import chenaurj.DnDToolsBack.repository.util.PlayerCharacterRowMapper;
 
-@Repository
+@Repository("playerCharacterRepository")
 public class PlayerCharacterRepositoryImpl implements PlayerCharacterRepository {
 
 	@Autowired

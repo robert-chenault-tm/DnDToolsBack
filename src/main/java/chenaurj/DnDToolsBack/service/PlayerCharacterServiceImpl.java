@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import chenaurj.DnDToolsBack.model.PlayerCharacter;
 import chenaurj.DnDToolsBack.repository.PlayerCharacterRepository;
 
-@Service
+@Service("playerCharacterService")
 public class PlayerCharacterServiceImpl implements PlayerCharacterService {
 
 	@Autowired

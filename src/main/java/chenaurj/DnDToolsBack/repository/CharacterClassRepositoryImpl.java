@@ -30,8 +30,8 @@ public class CharacterClassRepositoryImpl implements CharacterClassRepository {
 	}
 
 	@Override
-	public List<CharacterClass> getCharacterClasses(String userName) {
-		//userName will eventually be used when custom classes are implemented, for now it can be ignored
+	public List<CharacterClass> getCharacterClasses(String username) {
+		//username will eventually be used when custom classes are implemented, for now it can be ignored
 		return jdbcTemplate.query("select * from class", new CharacterClassRowMapper());
 	}
 

@@ -8,7 +8,7 @@ public interface RaceService {
 
 	Race getRace(String id);
 
-	List<Race> getRaces(String userName);
+	List<Race> getRaces(String username);
 
 	Race createRace(Race race);
 

@@ -21,8 +21,8 @@ public class RaceServiceImpl implements RaceService {
 	}
 
 	@Override
-	public List<Race> getRaces(String userName) {
-		return raceRepository.getRaces(userName);
+	public List<Race> getRaces(String username) {
+		return raceRepository.getRaces(username);
 	}
 
 	@Override

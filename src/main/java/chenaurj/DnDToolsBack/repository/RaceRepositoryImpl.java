@@ -29,8 +29,8 @@ public class RaceRepositoryImpl implements RaceRepository {
 	}
 
 	@Override
-	public List<Race> getRaces(String userName) {
-		//userName will eventually be used when custom races are implemented, for now it can be ignored
+	public List<Race> getRaces(String username) {
+		//username will eventually be used when custom races are implemented, for now it can be ignored
 		return jdbcTemplate.query("select * from race", new RaceRowMapper());
 	}
 

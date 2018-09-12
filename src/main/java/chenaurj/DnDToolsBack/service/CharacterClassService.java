@@ -8,7 +8,7 @@ public interface CharacterClassService {
 
 	CharacterClass getCharacterClass(String id);
 
-	List<CharacterClass> getCharacterClasses(String userName);
+	List<CharacterClass> getCharacterClasses(String username);
 
 	CharacterClass createCharacterClass(CharacterClass characterClass);
 

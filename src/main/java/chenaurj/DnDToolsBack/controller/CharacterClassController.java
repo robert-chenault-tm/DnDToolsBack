@@ -24,9 +24,9 @@ public class CharacterClassController {
 		return characterClassService.getCharacterClass(id);
 	}
 	
-	@RequestMapping(value = "/classes/{userName}", method = RequestMethod.GET)
-	public @ResponseBody List<CharacterClass> getCharacterClasses(@PathVariable(value = "userName") String userName) {
-		return characterClassService.getCharacterClasses(userName);
+	@RequestMapping(value = "/classes/{username}", method = RequestMethod.GET)
+	public @ResponseBody List<CharacterClass> getCharacterClasses(@PathVariable(value = "username") String username) {
+		return characterClassService.getCharacterClasses(username);
 	}
 	
 	@RequestMapping(value = "/class", method = RequestMethod.POST)

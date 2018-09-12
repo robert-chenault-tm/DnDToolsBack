@@ -24,9 +24,9 @@ public class RaceController {
 		return raceService.getRace(id);
 	}
 	
-	@RequestMapping(value = "/races/{userName}", method = RequestMethod.GET)
-	public @ResponseBody List<Race> getRaces(@PathVariable(value = "userName") String userName) {
-		return raceService.getRaces(userName);
+	@RequestMapping(value = "/races/{username}", method = RequestMethod.GET)
+	public @ResponseBody List<Race> getRaces(@PathVariable(value = "username") String username) {
+		return raceService.getRaces(username);
 	}
 	
 	@RequestMapping(value = "/race", method = RequestMethod.POST)

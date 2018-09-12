@@ -21,8 +21,8 @@ public class CharacterClassServiceImpl implements CharacterClassService {
 	}
 
 	@Override
-	public List<CharacterClass> getCharacterClasses(String userName) {
-		return characterClassRepository.getCharacterClasses(userName);
+	public List<CharacterClass> getCharacterClasses(String username) {
+		return characterClassRepository.getCharacterClasses(username);
 	}
 
 	@Override

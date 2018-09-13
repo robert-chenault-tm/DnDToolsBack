@@ -13,22 +13,22 @@ import chenaurj.DnDToolsBack.repository.PlayerCharacterRepository;
 public class PlayerCharacterServiceImpl implements PlayerCharacterService {
 
 	@Autowired
-	private PlayerCharacterRepository characterRepository;
+	private PlayerCharacterRepository playerCharacterRepository;
 	
 	@Override
 	public PlayerCharacter getCharacter(String id) {
-		return characterRepository.getCharacter(id);
+		return playerCharacterRepository.getCharacter(id);
 	}
 
 	@Override
 	public List<PlayerCharacter> getCharacters(String userName) {
-		return characterRepository.getCharacters(userName);
+		return playerCharacterRepository.getCharacters(userName);
 	}
 
 	@Override
 	public PlayerCharacter createCharacter(PlayerCharacter character) {
 		character.setId(UUID.randomUUID().toString());
-		return characterRepository.createCharacter(character);
+		return playerCharacterRepository.createCharacter(character);
 	}
 
 }

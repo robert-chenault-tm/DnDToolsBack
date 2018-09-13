@@ -17,20 +17,20 @@ import chenaurj.DnDToolsBack.service.PlayerCharacterService;
 public class CharacterController {
 
 	@Autowired
-	private PlayerCharacterService characterService;
+	private PlayerCharacterService playerCharacterService;
 	
 	@RequestMapping(value = "/character/{id}", method = RequestMethod.GET)
 	public @ResponseBody PlayerCharacter getCharacter(@PathVariable(value = "id") String id) {
-		return characterService.getCharacter(id);
+		return playerCharacterService.getCharacter(id);
 	}
 	
 	@RequestMapping(value = "/characters/{userName}", method = RequestMethod.GET)
 	public @ResponseBody List<PlayerCharacter> getCharacters(@PathVariable(value = "userName") String userName) {
-		return characterService.getCharacters(userName);
+		return playerCharacterService.getCharacters(userName);
 	}
 	
 	@RequestMapping(value = "/character", method = RequestMethod.POST)
 	public @ResponseBody PlayerCharacter createCharacter(@RequestBody PlayerCharacter character) {
-		return characterService.createCharacter(character);
+		return playerCharacterService.createCharacter(character);
 	}
 }

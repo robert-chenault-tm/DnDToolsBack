@@ -1,6 +1,7 @@
 package chenaurj.DnDToolsBack.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,12 @@ public class CampaignServiceImpl implements CampaignService {
 	@Override
 	public List<Campaign> getCampaigns(String username) {
 		return campaignRepository.getCampaigns(username);
+	}
+
+	@Override
+	public Campaign createCampaign(Campaign campaign) {
+		campaign.setId(UUID.randomUUID().toString());
+		return campaignRepository.createCampaign(campaign);
 	}
 
 }

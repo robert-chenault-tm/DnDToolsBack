@@ -8,4 +8,6 @@ public interface CampaignService {
 
 	List<Campaign> getCampaigns(String username);
 
+	Campaign createCampaign(Campaign campaign);
+
 }

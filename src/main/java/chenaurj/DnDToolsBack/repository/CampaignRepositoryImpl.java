@@ -20,4 +20,10 @@ public class CampaignRepositoryImpl implements CampaignRepository {
 		return jdbcTemplate.query("select * from campaign where username = ?", new CampaignRowMapper(), username);
 	}
 
+	@Override
+	public Campaign createCampaign(Campaign campaign) {
+		jdbcTemplate.update("insert into campaign (id, name, username) values (?, ?, ?)", campaign.getId(), campaign.getName(), campaign.getUsername());
+		return campaign;
+	}
+
 }

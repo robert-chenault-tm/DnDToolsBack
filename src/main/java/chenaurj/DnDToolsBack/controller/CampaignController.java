@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import chenaurj.DnDToolsBack.model.Campaign;
-import chenaurj.DnDToolsBack.model.CharacterClass;
 import chenaurj.DnDToolsBack.service.CampaignService;
 
 @Controller
@@ -23,6 +22,11 @@ public class CampaignController {
 	@RequestMapping(value = "/campaigns/{username}", method = RequestMethod.GET)
 	public @ResponseBody List<Campaign> getCampaigns(@PathVariable(value = "username") String username) {
 		return campaignService.getCampaigns(username);
+	}
+	
+	@RequestMapping(value = "/fullCampaign/{id}", method = RequestMethod.GET)
+	public @ResponseBody Campaign getFullCampaign(@PathVariable(value = "id") String id) {
+		return campaignService.getFullCampaign(id);
 	}
 	
 	@RequestMapping(value = "/campaign", method = RequestMethod.POST)

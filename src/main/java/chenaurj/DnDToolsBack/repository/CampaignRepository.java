@@ -10,4 +10,6 @@ public interface CampaignRepository {
 
 	Campaign createCampaign(Campaign campaign);
 
+	Campaign getFullCampaign(String id);
+
 }

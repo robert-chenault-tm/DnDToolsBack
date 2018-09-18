@@ -26,4 +26,9 @@ public class CampaignServiceImpl implements CampaignService {
 		return campaignRepository.createCampaign(campaign);
 	}
 
+	@Override
+	public Campaign getFullCampaign(String id) {
+		return campaignRepository.getFullCampaign(id);
+	}
+
 }

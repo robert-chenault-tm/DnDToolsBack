@@ -1,10 +1,13 @@
 package chenaurj.DnDToolsBack.model;
 
+import java.util.List;
+
 public class Campaign {
 
 	private String id;
 	private String name;
 	private String username;
+	private List<PlayerCharacter> characters;
 	
 	public String getId() {
 		return id;
@@ -23,6 +26,12 @@ public class Campaign {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public List<PlayerCharacter> getCharacters() {
+		return characters;
+	}
+	public void setCharacters(List<PlayerCharacter> characters) {
+		this.characters = characters;
 	}
 	
 }

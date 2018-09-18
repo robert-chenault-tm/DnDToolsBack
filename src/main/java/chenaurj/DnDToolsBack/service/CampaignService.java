@@ -10,4 +10,6 @@ public interface CampaignService {
 
 	Campaign createCampaign(Campaign campaign);
 
+	Campaign getFullCampaign(String id);
+
 }

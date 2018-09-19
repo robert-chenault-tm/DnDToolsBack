@@ -12,4 +12,6 @@ public interface CampaignRepository {
 
 	Campaign getFullCampaign(String id);
 
+	Campaign editCampaign(Campaign campaign);
+
 }

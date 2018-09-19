@@ -33,4 +33,9 @@ public class CampaignController {
 	public @ResponseBody Campaign createCampaign(@RequestBody Campaign campaign) {
 		return campaignService.createCampaign(campaign);
 	}
+	
+	@RequestMapping(value = "/campaign", method = RequestMethod.PUT)
+	public @ResponseBody Campaign editCampaign(@RequestBody Campaign campaign) {
+		return campaignService.editCampaign(campaign);
+	}
 }

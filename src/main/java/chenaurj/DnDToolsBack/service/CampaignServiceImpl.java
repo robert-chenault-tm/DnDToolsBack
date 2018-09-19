@@ -31,4 +31,9 @@ public class CampaignServiceImpl implements CampaignService {
 		return campaignRepository.getFullCampaign(id);
 	}
 
+	@Override
+	public Campaign editCampaign(Campaign campaign) {
+		return campaignRepository.editCampaign(campaign);
+	}
+
 }

@@ -11,6 +11,7 @@ import chenaurj.DnDToolsBack.model.DamageDice;
 import chenaurj.DnDToolsBack.model.items.ArmorMods;
 import chenaurj.DnDToolsBack.model.items.Item;
 import chenaurj.DnDToolsBack.model.items.WeaponMods;
+import chenaurj.DnDToolsBack.repository.util.ArmorModsRowMapper;
 import chenaurj.DnDToolsBack.repository.util.ItemRowMapper;
 import chenaurj.DnDToolsBack.repository.util.WeaponModsRowMapper;
 
@@ -38,6 +39,7 @@ public class ItemRepositoryImpl implements ItemRepository {
 		try {
 			item = jdbcTemplate.queryForObject("select * from item where id = ?", new ItemRowMapper(), id);
 			singleWeaponMods = jdbcTemplate.query("select * from weapon w inner join weapon_damage wd on w.item_id = wd.weapon_id inner join damage_dice dd on wd.damage_id = dd.id where w.item_id = ?", new WeaponModsRowMapper(), id);
+			singleArmorMods = jdbcTemplate.query("select * from armor where item_id = ?", new ArmorModsRowMapper(), id);
 			if(singleWeaponMods.size() == 0) {
 				item.setWeaponMods(null);
 			} else if(singleWeaponMods.size() == 1) {
@@ -50,6 +52,13 @@ public class ItemRepositoryImpl implements ItemRepository {
 				}
 				weaponMods.setDamageDice(dice);
 				item.setWeaponMods(weaponMods);
+			}
+			if(singleArmorMods.size() == 0) {
+				item.setArmorMods(null);
+			} else if(singleArmorMods.size() == 1) {
+				item.setArmorMods(singleArmorMods.get(0));
+			} else {
+				//
 			}
 		} catch(Exception ex) {
 			System.out.println(ex.getMessage());

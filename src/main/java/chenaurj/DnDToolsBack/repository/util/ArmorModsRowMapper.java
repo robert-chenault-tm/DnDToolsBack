@@ -14,7 +14,7 @@ public class ArmorModsRowMapper implements RowMapper<ArmorMods> {
 		ArmorMods armor = new ArmorMods();
 		
 		armor.setItemId(rs.getString("item_id"));
-		armor.setArmorType(ArmorMods.ArmorTypes.valueOf(rs.getString("armor_type")));
+		armor.setArmorType(rs.getString("armor_type"));
 		armor.setBaseAC(rs.getInt("base_ac"));
 		armor.setStrengthReq(rs.getInt("strength_req"));
 		armor.setStealthDisadvantage(rs.getBoolean("stealth_disadvantage"));

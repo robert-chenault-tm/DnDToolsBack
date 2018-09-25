@@ -24,7 +24,11 @@ public class ItemRepositoryImpl implements ItemRepository {
 	@Override
 	public Item createItem(Item item) {
 		jdbcTemplate.update("insert into item (id, username, name, description, rarity, value_in_gp, weight_in_lbs) values (?, ?, ?, ?, ?, ?, ?)", item.getId(), item.getUsername(), item.getName(), item.getDescription(), item.getRarity(), item.getValueInGP(), item.getWeightInlbs());
-
+		if(item.getArmorMods() != null) {
+			jdbcTemplate.update("insert into armor (item_id, armor_type, base_ac, strength_req, stealth_disadvantage) values (?, ?, ?, ?, ?)", item.getId(), item.getArmorMods().getArmorType(), item.getArmorMods().getBaseAC(), item.getArmorMods().getStrengthReq(), item.getArmorMods().isStealthDisadvantage());
+		} else if(item.getWeaponMods() != null) {
+			
+		}
 		
 		return getItem(item.getId());
 	}

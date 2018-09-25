@@ -1,11 +1,9 @@
 package chenaurj.DnDToolsBack.model.items;
 
 public class ArmorMods {
-
-	public enum ArmorTypes{LIGHT, MEDIUM, HEAVY, SHIELD};
 	
 	private String itemId;
-	private ArmorTypes armorType;
+	private String armorType;
 	private int baseAC;
 	private int strengthReq;
 	private boolean stealthDisadvantage;
@@ -15,12 +13,6 @@ public class ArmorMods {
 	}
 	public void setItemId(String itemId) {
 		this.itemId = itemId;
-	}
-	public ArmorTypes getArmorType() {
-		return armorType;
-	}
-	public void setArmorType(ArmorTypes armorType) {
-		this.armorType = armorType;
 	}
 	public int getBaseAC() {
 		return baseAC;
@@ -39,5 +31,11 @@ public class ArmorMods {
 	}
 	public void setStealthDisadvantage(boolean stealthDisadvantage) {
 		this.stealthDisadvantage = stealthDisadvantage;
+	}
+	public String getArmorType() {
+		return armorType;
+	}
+	public void setArmorType(String armorType) {
+		this.armorType = armorType;
 	}
 }

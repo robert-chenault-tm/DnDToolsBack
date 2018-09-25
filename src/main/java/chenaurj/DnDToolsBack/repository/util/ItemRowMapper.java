@@ -15,6 +15,7 @@ public class ItemRowMapper implements RowMapper<Item> {
 		
 		item.setId(rs.getString("id"));
 		item.setName(rs.getString("name"));
+		item.setUsername(rs.getString("username"));
 		item.setDescription(rs.getString("description"));
 		item.setRarity(rs.getString("rarity"));
 		item.setValueInGP(rs.getFloat("value_in_gp"));

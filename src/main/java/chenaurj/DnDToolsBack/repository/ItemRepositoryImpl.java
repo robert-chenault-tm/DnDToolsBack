@@ -23,7 +23,7 @@ public class ItemRepositoryImpl implements ItemRepository {
 	
 	@Override
 	public Item createItem(Item item) {
-		jdbcTemplate.update("insert into item (id, name, description, rarity, value_in_gp, weight_in_lbs) values (?, ?, ?, ?, ?, ?)", item.getId(), item.getName(), item.getDescription(), item.getRarity(), item.getValueInGP(), item.getWeightInlbs());
+		jdbcTemplate.update("insert into item (id, username, name, description, rarity, value_in_gp, weight_in_lbs) values (?, ?, ?, ?, ?, ?, ?)", item.getId(), item.getUsername(), item.getName(), item.getDescription(), item.getRarity(), item.getValueInGP(), item.getWeightInlbs());
 
 		
 		return getItem(item.getId());

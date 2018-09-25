@@ -4,6 +4,7 @@ public class Item {
 
 	private String id;
 	private String name;
+	private String username;
 	private String description;
 	private String rarity;
 	private float valueInGP;
@@ -58,6 +59,12 @@ public class Item {
 	}
 	public void setArmorMods(ArmorMods armorMods) {
 		this.armorMods = armorMods;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	

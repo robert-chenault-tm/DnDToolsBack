@@ -27,14 +27,18 @@ public class ItemRepositoryImpl implements ItemRepository {
 		if(item.getArmorMods() != null) {
 			jdbcTemplate.update("insert into armor (item_id, armor_type, base_ac, strength_req, stealth_disadvantage) values (?, ?, ?, ?, ?)", item.getId(), item.getArmorMods().getArmorType(), item.getArmorMods().getBaseAC(), item.getArmorMods().getStrengthReq(), item.getArmorMods().isStealthDisadvantage());
 		} else if(item.getWeaponMods() != null) {
-			
+			jdbcTemplate.update("insert into weapon (item_id, weapon_type, simple, one_handed, reach, short_range, long_range) values (?, ?, ?, ?, ?, ?, ?)", item.getId(), item.getWeaponMods().getWeaponType(), item.getWeaponMods().isSimple(), item.getWeaponMods().isOneHanded(), item.getWeaponMods().getReach(), item.getWeaponMods().getShortRange(), item.getWeaponMods().getLongRange());
+			for(DamageDice die : item.getWeaponMods().getDamageDice()) {
+				jdbcTemplate.update("insert into weapon_damage (weapon_id, dice_number, dice_type, damage_type) values (?, ?, ?, ?)", item.getId(), die.getDiceNumber(), die.getDiceType(), die.getDamageType());
+			}
 		}
 		
-		return getItem(item.getId());
+		return item;
 	}
 
 	@Override
 	public Item getItem(String id) {
+		/*
 		Item item;
 		WeaponMods weaponMods;
 		ArmorMods armorMods;
@@ -70,6 +74,8 @@ public class ItemRepositoryImpl implements ItemRepository {
 		}
 		
 		return item;
+		*/
+		return new Item();
 	}
 
 	@Override

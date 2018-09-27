@@ -1,7 +1,9 @@
 package chenaurj.DnDToolsBack.repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,7 +15,6 @@ import chenaurj.DnDToolsBack.model.items.Item;
 import chenaurj.DnDToolsBack.model.items.WeaponMods;
 import chenaurj.DnDToolsBack.repository.util.ArmorModsRowMapper;
 import chenaurj.DnDToolsBack.repository.util.ItemRowMapper;
-import chenaurj.DnDToolsBack.repository.util.WeaponModsRowMapper;
 
 @Repository("itemRepository")
 public class ItemRepositoryImpl implements ItemRepository {
@@ -38,44 +39,50 @@ public class ItemRepositoryImpl implements ItemRepository {
 
 	@Override
 	public Item getItem(String id) {
-		/*
 		Item item;
 		WeaponMods weaponMods;
-		ArmorMods armorMods;
-		List<WeaponMods> singleWeaponMods;
-		List<ArmorMods> singleArmorMods;
+		List<ArmorMods> armorModsList;
+		
 		try {
 			item = jdbcTemplate.queryForObject("select * from item where id = ?", new ItemRowMapper(), id);
-			singleWeaponMods = jdbcTemplate.query("select * from weapon w inner join weapon_damage wd on w.item_id = wd.weapon_id inner join damage_dice dd on wd.damage_id = dd.id where w.item_id = ?", new WeaponModsRowMapper(), id);
-			singleArmorMods = jdbcTemplate.query("select * from armor where item_id = ?", new ArmorModsRowMapper(), id);
-			if(singleWeaponMods.size() == 0) {
-				item.setWeaponMods(null);
-			} else if(singleWeaponMods.size() == 1) {
-				item.setWeaponMods(singleWeaponMods.get(0));
-			} else {
-				weaponMods = singleWeaponMods.get(0);
-				List<DamageDice> dice = weaponMods.getDamageDice();
-				for(int i = 1;i < singleWeaponMods.size(); i++) {
-					dice.add(singleWeaponMods.get(i).getDamageDice().get(0));
-				}
-				weaponMods.setDamageDice(dice);
-				item.setWeaponMods(weaponMods);
-			}
-			if(singleArmorMods.size() == 0) {
+			
+			armorModsList = jdbcTemplate.query("select * from armor where item_id = ?", new ArmorModsRowMapper(), id);
+			if(armorModsList.size() == 0) {
 				item.setArmorMods(null);
-			} else if(singleArmorMods.size() == 1) {
-				item.setArmorMods(singleArmorMods.get(0));
+			} else if(armorModsList.size() == 1) {
+				item.setArmorMods(armorModsList.get(0));
 			} else {
-				//
+				//Should not happen currently
+			}
+			
+			List<Map<String, Object>> weaponRows = jdbcTemplate.queryForList("select * from weapon w left join weapon_damage wd on w.item_id = wd.weapon_id where w.item_id = ?", id);
+			if(weaponRows.isEmpty()) {
+				item.setWeaponMods(null);
+			} else {
+				weaponMods = new WeaponMods();
+				List<DamageDice> dice = new ArrayList<DamageDice>();
+				for(Map<String, Object> row : weaponRows) {
+					DamageDice die = new DamageDice();
+					die.setDiceNumber((int) row.get("dice_number"));
+					die.setDiceType((String) row.get("dice_type"));
+					die.setDamageType((String) row.get("damage_type"));
+					dice.add(die);
+				}
+				weaponMods.setWeaponType((String) weaponRows.get(0).get("weapon_type"));
+				weaponMods.setSimple(((int) weaponRows.get(0).get("simple")) == 1);
+				weaponMods.setOneHanded(((int) weaponRows.get(0).get("one_handed")) == 1);
+				weaponMods.setReach((int) weaponRows.get(0).get("reach"));
+				weaponMods.setShortRange((int) weaponRows.get(0).get("short_range"));
+				weaponMods.setLongRange((int) weaponRows.get(0).get("long_range"));
+				weaponMods.setDamageDice(dice);
+				
+				item.setWeaponMods(weaponMods);
 			}
 		} catch(Exception ex) {
 			System.out.println(ex.getMessage());
 			item = null;
 		}
-		
 		return item;
-		*/
-		return new Item();
 	}
 
 	@Override
